@@ -1,5 +1,5 @@
 {
-  "name": "myApp",
+  "name": "tracking-app",
   "integrations": {
     "cordova": {}
   },
