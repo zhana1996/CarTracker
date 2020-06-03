@@ -6,6 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['map.page.scss']
 })
 export class MapPage {
+  public options: google.maps.MapOptions = {
+    fullscreenControl: false,
+    center: {lat: 37.421995, lng: -122.084092},
+    zoom: 17
+  };
 
   constructor() {}
 

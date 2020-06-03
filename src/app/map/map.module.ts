@@ -7,12 +7,15 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { MapPageRoutingModule } from './map-routing.module';
 import { MapPage } from './map.page';
 
+import { GoogleMapsModule } from '@angular/google-maps'
+
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
+    GoogleMapsModule,
     MapPageRoutingModule
   ],
   declarations: [MapPage]

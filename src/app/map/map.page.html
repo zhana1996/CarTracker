@@ -7,11 +7,17 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<google-map height="100%" 
+            width="100%"
+            [options]="options">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Твоята скорост в момента:</ion-card-subtitle>
+      <ion-card-title>120 км/ч</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Превишаваш скоростта с: 10км/ч
+    </ion-card-content>
+  </ion-card>
+</google-map>
 </ion-content>

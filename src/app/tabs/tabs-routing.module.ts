@@ -16,10 +16,6 @@ const routes: Routes = [
         loadChildren: () => import('../map/map.module').then(m => m.MapPageModule)
       },
       {
-        path: 'speed',
-        loadChildren: () => import('../speed/speed.module').then(m => m.SpeedPageModule)
-      },
-      {
         path: 'statistics',
         loadChildren: () => import('../statistics/statistics.module').then(m => m.StatisticsPageModule)
       },
