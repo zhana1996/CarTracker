@@ -20,14 +20,9 @@ export class StatisticsPage implements OnInit{
         this.details2 = this.details.slice(0,2);
         this.detailsOther = this.details.slice(2);
         }
-        console.log(this.details2);
-        console.log(this.detailsOther);
     }
 
     loadMore() {
         this.isLoadMore = true;
-        for(let i=0; i<this.details.length; i++){
-            
-        }
     }
 }

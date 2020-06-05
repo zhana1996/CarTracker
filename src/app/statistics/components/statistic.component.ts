@@ -10,7 +10,5 @@ export class StatisticComponent implements OnInit {
     @Input() detail: IDetails;
     constructor() {}
 
-    ngOnInit() {
-        console.log(this.detail);
-    }
+    ngOnInit() {}
 }
