@@ -7,6 +7,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { StatisticsPage } from './statistics.page';
 import { StatisticsPageRoutingModule } from './statistics-routing.module';
+import { StatisticComponent } from './components/statistic.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { StatisticsPageRoutingModule } from './statistics-routing.module';
     RouterModule.forChild([{ path: '', component: StatisticsPage }]),
     StatisticsPageRoutingModule,
   ],
-  declarations: [StatisticsPage]
+  declarations: [StatisticsPage, StatisticComponent]
 })
 export class StatisticsPageModule {}

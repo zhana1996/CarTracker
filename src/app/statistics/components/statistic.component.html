@@ -1,0 +1,48 @@
+<ion-card>
+    <ion-card-content>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="6">
+                    <ion-item>
+                        <ion-label>
+                            Дата: {{detail.date | date: 'mediumDate'}}
+                        </ion-label>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-item>
+                        <ion-label>
+                            Час: {{detail.date | date: 'mediumTime'}}
+                        </ion-label>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="6">
+                    <ion-item>
+                        <ion-label>
+                            Място: {{detail.place}}
+                        </ion-label>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-item>
+                        <ion-label>
+                            Кола: {{detail.carDetails}}
+                        </ion-label>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-item>
+                        <ion-label>
+                            Превишили сте с: 
+                            <ion-note color="danger">{{detail.speed}}км/ч</ion-note>
+                        </ion-label>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card-content>
+</ion-card>
