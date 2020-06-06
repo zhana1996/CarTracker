@@ -7,17 +7,22 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-<google-map height="100%" 
-            width="100%"
-            [options]="options">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Твоята скорост в момента:</ion-card-subtitle>
-      <ion-card-title>120 км/ч</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      Превишаваш скоростта с: 10км/ч
-    </ion-card-content>
-  </ion-card>
-</google-map>
+  <google-map height="100%" width="100%" [options]="options" [center]="center">
+    <map-marker
+      *ngIf="center"
+      [options]="markerOptions"
+      [position]="markerPosition"
+    >
+    </map-marker>
+    <map-polyline [path]="polylinePath"></map-polyline>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Твоята скорост в момента:</ion-card-subtitle>
+        <ion-card-title>{{ speed }} км/ч</ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="speed > MAX_SPEED">
+        Превишаваш скоростта с: {{ (speed - MAX_SPEED) }} км/ч
+      </ion-card-content>
+    </ion-card>
+  </google-map>
 </ion-content>

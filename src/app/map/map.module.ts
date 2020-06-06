@@ -7,7 +7,8 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { MapPageRoutingModule } from './map-routing.module';
 import { MapPage } from './map.page';
 
-import { GoogleMapsModule } from '@angular/google-maps'
+import { GoogleMapsModule } from '@angular/google-maps';
+import { MapService } from './service/map.service';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { GoogleMapsModule } from '@angular/google-maps'
     GoogleMapsModule,
     MapPageRoutingModule
   ],
-  declarations: [MapPage]
+  declarations: [MapPage],
+  providers: [MapService]
 })
 export class MapPageModule {}
