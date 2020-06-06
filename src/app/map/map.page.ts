@@ -33,14 +33,11 @@ export class MapPage {
     private zone: NgZone,
     private mapService: MapService,
     private platform: Platform
-  ) {
-    this.platform.ready().then(() => {
-      this.mapService.initBackgroundLocation();
-    });
-  }
+  ) {}
 
   ionViewWillEnter(): void {
     if (this.platform.is('cordova')) {
+      this.mapService.initBackgroundLocation();
       this.mapService.locationChange
         .pipe(takeUntil(this.destroyed$))
         .subscribe((location: Location) => {
