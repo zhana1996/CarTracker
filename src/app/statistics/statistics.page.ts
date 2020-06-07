@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { IDetails } from './models/details';
-import { StatisticsService } from './statistics.service';
+import { IStatistic } from './models/details';
+import { Observable } from 'rxjs';
+import { StatisticsFacade } from './facade/statistics.facade';
 
 @Component({
     selector: 'app-statistics',
@@ -8,21 +9,11 @@ import { StatisticsService } from './statistics.service';
 })
 
 export class StatisticsPage implements OnInit{
-    public isLoadMore = false;
-    public details: Array<IDetails>;
-    public details2: Array<IDetails>;
-    public detailsOther: Array<IDetails>;
-    constructor(private service: StatisticsService) {}
+    public statistics$: Observable<IStatistic[]> = this.facade.statistics$;
 
-    ngOnInit() {
-        this.details = this.service.getDetails();
-        if (this.details.length > 0) {
-        this.details2 = this.details.slice(0,2);
-        this.detailsOther = this.details.slice(2);
-        }
-    }
+    constructor(private facade: StatisticsFacade) {}
 
-    loadMore() {
-        this.isLoadMore = true;
+    ngOnInit(): void {
+        this.facade.getStatistics();
     }
 }

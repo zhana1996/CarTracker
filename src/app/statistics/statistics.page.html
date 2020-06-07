@@ -12,9 +12,5 @@
         <ion-title size="large">Tab 4</ion-title>
       </ion-toolbar>
     </ion-header>
-    <app-statistic *ngFor="let detail of details" [detail]="detail"></app-statistic>
-    <!-- <ng-container *ngIf="isLoadMore">
-      <app-statistic *ngFor="let detail of detailsOther" [detail]="detail"></app-statistic>
-    </ng-container>
-    <a *ngIf="!isLoadMore && detailsOther.length > 0" (click)="loadMore()" stile="text-align: center">Зареди още</a> -->
+    <app-statistic *ngFor="let statistic of (statistics$ | async)" [statistic]="statistic"></app-statistic>
 </ion-content>

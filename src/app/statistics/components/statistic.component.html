@@ -1,12 +1,12 @@
 <ion-card>
     <ion-card-content>
-        <ion-item style="background-color: #FFEFD5;">
+        <ion-item>
             <ion-avatar slot="end">
                 <img src="assets/images/date.jpg" alt="date">
             </ion-avatar>
             <ion-label>
                 <p>Дата и час<p>
-                <h3> {{detail.date | date: 'mediumDate'}} {{detail.date | date: 'mediumTime'}}</h3>
+                <h3> {{statistic.date | date: 'mediumDate'}} {{statistic.date | date: 'mediumTime'}}</h3>
             </ion-label>
         </ion-item>
         <ion-item>
@@ -15,7 +15,7 @@
             </ion-avatar>
             <ion-label>
                 <p>Местоположение</p>
-                <h3>Място: {{detail.place}}</h3>
+                <h3>Място: {{statistic.address}}</h3>
             </ion-label>
         </ion-item>
         <ion-item>
@@ -24,7 +24,7 @@
             </ion-avatar>
             <ion-label>
                 <p>Данни на колата</p>
-                <h3>{{detail.carDetails}}</h3>
+                <h3>{{statistic.carData}}</h3>
             </ion-label>
         </ion-item>
         <ion-item>
@@ -33,7 +33,7 @@
             </ion-avatar>
             <ion-label>
                 <p>Превишена скорост</p>
-                <h3>{{detail.speed}}км/ч</h3>
+                <h3>{{statistic.overspeed}}км/ч</h3>
             </ion-label>
         </ion-item>
     </ion-card-content>

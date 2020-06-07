@@ -1,6 +1,7 @@
-export interface IDetails {
+export interface IStatistic {
+     _id: string,
      date: Date;
-     place: string;
-     speed: number;
-     carDetails: string
+     address: string;
+     overspeed: number;
+     carData: string
 }
