@@ -19,8 +19,8 @@ export class StatisticsEffects {
     getStatistics = createEffect (() => 
     this.actions$.pipe(
         ofType(fromActions.getStatistics),
-        switchMap(() =>
-            this.service.getAll().pipe(
+        switchMap(({skip, limit}) =>
+            this.service.getAll(skip, limit).pipe(
                 map((statistics: IStatistic[]) => fromActions.getStatisticsSuccess({statistics})),
                 catchError(() => of(new EffectError()))
             ))

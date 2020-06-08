@@ -7,23 +7,22 @@ export interface StatisticsState {
 }
 
 export const initialState: StatisticsState = {
-    statistics: null
+    statistics: []
 }
 
 const featureReducer = createReducer (
     initialState,
     on (fromActions.getStatistics, state => ({
-        ...state,
-        statistics: null
+        ...state
     })),
     on (fromActions.getStatisticsSuccess, (state, {statistics} )=> ({
         ...state,
-        statistics
+        statistics: [...state.statistics, ...statistics]
     }))
 );
 
 export interface State {
-    'statistics': StatisticsState
+    statistics: StatisticsState
 }
 
 export const getStatisticsState = createFeatureSelector<StatisticsState>('statistics');

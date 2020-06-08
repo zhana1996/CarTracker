@@ -9,11 +9,18 @@ import { StatisticsFacade } from './facade/statistics.facade';
 })
 
 export class StatisticsPage implements OnInit{
+    public skip = 0;
+    public limit = 2;
     public statistics$: Observable<IStatistic[]> = this.facade.statistics$;
 
     constructor(private facade: StatisticsFacade) {}
 
     ngOnInit(): void {
-        this.facade.getStatistics();
+        this.facade.getStatistics(this.skip, this.limit);
+    }
+
+    loadMore(){
+        this.skip +=2;
+        this.facade.getStatistics(this.skip, this.limit);
     }
 }

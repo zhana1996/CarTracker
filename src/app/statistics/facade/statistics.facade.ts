@@ -13,7 +13,7 @@ export class StatisticsFacade {
         this.statistics$ = this.store.pipe(select(fromReducer.getStatistics));
     }
 
-    getStatistics() {
-        this.store.dispatch(fromAction.getStatistics());
+    getStatistics(skip: number, limit: number) {
+        this.store.dispatch(fromAction.getStatistics({skip, limit}));
     }
 }

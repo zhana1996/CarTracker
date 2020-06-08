@@ -13,4 +13,5 @@
       </ion-toolbar>
     </ion-header>
     <app-statistic *ngFor="let statistic of (statistics$ | async)" [statistic]="statistic"></app-statistic>
+    <ion-button *ngIf="(statistics$ | async) && this.skip < (statistics$ | async).length" color="secondary" (click)="loadMore()">Зареди още...</ion-button>
 </ion-content>
