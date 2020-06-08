@@ -1,10 +1,26 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { IStatistic } from './models/details';
+import { Observable } from 'rxjs';
+import { StatisticsFacade } from './facade/statistics.facade';
 
 @Component({
     selector: 'app-statistics',
     templateUrl: 'statistics.page.html'
 })
 
-export class StatisticsPage {
-    constructor() {}
+export class StatisticsPage implements OnInit{
+    public skip = 0;
+    public limit = 2;
+    public statistics$: Observable<IStatistic[]> = this.facade.statistics$;
+
+    constructor(private facade: StatisticsFacade) {}
+
+    ngOnInit(): void {
+        this.facade.getStatistics(this.skip, this.limit);
+    }
+
+    loadMore(){
+        this.skip +=2;
+        this.facade.getStatistics(this.skip, this.limit);
+    }
 }
