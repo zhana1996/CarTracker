@@ -1,0 +1,29 @@
+<ion-content padding>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+      <ion-grid>
+        <ion-row>
+          <ion-col style="margin-top: 150px;" size-md="6" size-lg="5" size-xs="12">
+            <div text-center>
+              <h3 style="text-align: center;">Вход</h3>
+            </div>
+            <div padding>
+              <ion-item>
+                <ion-input name="username" type="text" placeholder="Потребителско име" formControlName="username"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input name="password" type="password" placeholder="Парола" formControlName="password"></ion-input>
+              </ion-item>
+            </div>
+            <div padding>
+              <ion-button size="medium" type="submit" [disabled]="form.invalid" expand="block">Вход</ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+            <div style="text-align: center;">
+                Ако нямаш регистрация, може да си направиш такава <a (click)="login()">тук</a> !
+            </div>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-content>
