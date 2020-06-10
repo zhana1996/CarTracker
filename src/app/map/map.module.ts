@@ -9,6 +9,7 @@ import { MapPage } from './map.page';
 
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MapService } from './service/map.service';
+import { StatisticsPageModule } from '../statistics/statistics.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { MapService } from './service/map.service';
     FormsModule,
     ExploreContainerComponentModule,
     GoogleMapsModule,
-    MapPageRoutingModule
+    MapPageRoutingModule,
+    StatisticsPageModule
   ],
   declarations: [MapPage],
   providers: [MapService]

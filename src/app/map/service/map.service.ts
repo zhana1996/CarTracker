@@ -21,6 +21,23 @@ export class MapService {
     BackgroundGeolocation.onLocation((location) => this.locationChange$.next(location));
   }
 
+  getAddressFromCoords(geocoder: google.maps.Geocoder, lat: number, lng: number): Promise<any> {
+    const latlng = { lat, lng };
+    const promise = new Promise((resolve, reject) => {
+      geocoder = new google.maps.Geocoder();
+
+      geocoder.geocode({ location: latlng }, (results, status) => {
+        if (status === google.maps.GeocoderStatus.OK && results[0]) {
+          resolve(results[0].formatted_address);
+        } else {
+          reject();
+        }
+      });
+    });
+
+    return promise;
+  }
+
   get locationChange(): Observable<Location> {
     return this.locationChange$.asObservable();
   }
