@@ -1,7 +1,8 @@
 export interface IStatistic {
-     _id: string,
+     _id?: string;
      date: Date;
      address: string;
      overspeed: number;
-     carData: string
+     carData: string;
+     vehicle: string;
 }

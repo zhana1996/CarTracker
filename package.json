@@ -27,8 +27,10 @@
     "@ngrx/entity": "^9.2.0",
     "@ngrx/store": "^9.2.0",
     "cordova-android": "8.1.0",
+    "cordova-background-geolocation-lt": "^3.7.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.10.0",
+    "xcode": "^3.0.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
@@ -70,7 +72,8 @@
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-background-geolocation-lt": {}
     },
     "platforms": [
       "android"
