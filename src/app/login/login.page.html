@@ -1,17 +1,14 @@
 <ion-content padding>
-    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <form [formGroup]="form" (ngSubmit)="login(form.value)">
       <ion-grid>
         <ion-row>
-          <ion-col style="margin-top: 150px;" size-md="6" size-lg="5" size-xs="12">
+          <ion-col style="margin-top: 150px;" size="12">
             <div text-center>
-              <h3 style="text-align: center;">Вход</h3>
+              <h3 style="text-align: center;">Вход в приложението</h3>
             </div>
             <div padding>
               <ion-item>
-                <ion-input name="username" type="text" placeholder="Потребителско име" formControlName="username"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-input name="password" type="password" placeholder="Парола" formControlName="password"></ion-input>
+                <ion-input name="number" type="text" placeholder="Регистрационен номер на колата"></ion-input>
               </ion-item>
             </div>
             <div padding>
@@ -21,7 +18,7 @@
         </ion-row>
         <ion-row>
             <div style="text-align: center;">
-                Ако нямаш регистрация, може да си направиш такава <a (click)="login()">тук</a> !
+                Ако нямате регистрация на колата може да я направите <a routerLink="/registration">тук</a> !
             </div>
         </ion-row>
       </ion-grid>

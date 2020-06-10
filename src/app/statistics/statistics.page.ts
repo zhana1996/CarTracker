@@ -19,7 +19,7 @@ export class StatisticsPage implements OnInit{
         this.facade.getStatistics(this.skip, this.limit);
     }
 
-    loadMore(){
+    loadMore(): void {
         this.skip +=2;
         this.facade.getStatistics(this.skip, this.limit);
     }
