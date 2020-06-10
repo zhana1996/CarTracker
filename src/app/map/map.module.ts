@@ -7,7 +7,9 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { MapPageRoutingModule } from './map-routing.module';
 import { MapPage } from './map.page';
 
-import { GoogleMapsModule } from '@angular/google-maps'
+import { GoogleMapsModule } from '@angular/google-maps';
+import { MapService } from './service/map.service';
+import { StatisticsPageModule } from '../statistics/statistics.module';
 
 @NgModule({
   imports: [
@@ -16,8 +18,10 @@ import { GoogleMapsModule } from '@angular/google-maps'
     FormsModule,
     ExploreContainerComponentModule,
     GoogleMapsModule,
-    MapPageRoutingModule
+    MapPageRoutingModule,
+    StatisticsPageModule
   ],
-  declarations: [MapPage]
+  declarations: [MapPage],
+  providers: [MapService]
 })
 export class MapPageModule {}
