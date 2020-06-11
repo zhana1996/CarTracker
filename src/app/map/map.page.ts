@@ -1,24 +1,23 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { Location } from 'cordova-background-geolocation-lt';
 import { MapService } from './service/map.service';
 import { Platform } from '@ionic/angular';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { StatisticsFacade } from '../statistics/facade/statistics.facade';
 import { IStatistic } from '../statistics/models/details';
+import { PusherService } from './service/pusher.service';
 
 @Component({
   selector: 'app-map',
   templateUrl: 'map.page.html',
   styleUrls: ['map.page.scss'],
 })
-export class MapPage implements OnInit {
+export class MapPage {
   private readonly destroyed$ = new Subject<void>();
   private distanceCounter = 200;
 
   readonly MAX_SPEED = 40;
-
-  options: google.maps.MapOptions = {
+  readonly options: google.maps.MapOptions = {
     fullscreenControl: false,
     center: { lat: 37.421995, lng: -122.084092 },
     zoom: 17,
@@ -28,7 +27,7 @@ export class MapPage implements OnInit {
   center: google.maps.LatLng;
   markerPosition: google.maps.LatLng;
   markerOptions: google.maps.MarkerOptions = {
-    animation: google.maps.Animation.DROP,
+    animation: google.maps.Animation.DROP
   };
   polylinePath: Array<google.maps.LatLng> = [];
 
@@ -36,21 +35,22 @@ export class MapPage implements OnInit {
     private zone: NgZone,
     private mapService: MapService,
     private platform: Platform,
-    private statisticFacade: StatisticsFacade
+    private statisticFacade: StatisticsFacade,
+    private pusherService: PusherService,
   ) {}
 
-  ngOnInit(): void {
+  ionViewWillEnter(): void {
+    const channel = this.pusherService.init();
+
+    channel.bind(
+      'vehicle_location',
+      async (data) => {
+        const location: Location = data.location;
+        console.log(data);
+        await this.updateLocation(location);
+    });
     if (this.platform.is('cordova')) {
       this.mapService.initBackgroundLocation();
-      this.mapService.locationChange
-        .pipe(takeUntil(this.destroyed$))
-        .subscribe((location: Location) => {
-          if (location?.coords) {
-            this.zone.run(async () => {
-              await this.updateLocation(location);
-            });
-          }
-        });
     } else {
       navigator.geolocation.getCurrentPosition((position: Position) => {
         this.center = this.markerPosition = new google.maps.LatLng(
@@ -67,8 +67,8 @@ export class MapPage implements OnInit {
     return distance;
   }
 
-  private async updateLocation(location: Location): Promise<void> {
-    const coords = location?.coords;
+  private async updateLocation(location: any): Promise<void> {
+    const coords = location.coords;
     if (coords.speed > 0) {
       this.speed = Math.round(coords.speed * 3.6);
     }
