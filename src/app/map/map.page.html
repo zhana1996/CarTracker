@@ -20,8 +20,14 @@
         <ion-card-subtitle>Твоята скорост в момента:</ion-card-subtitle>
         <ion-card-title>{{ speed }} км/ч</ion-card-title>
       </ion-card-header>
-      <ion-card-content *ngIf="speed > MAX_SPEED">
-        Превишаваш скоростта с: {{ (speed - MAX_SPEED) }} км/ч
+      <ion-card-content *ngIf="this.speed > MAX_SPEED">
+        Превишаваш скоростта с:  <strong>{{ (speed - MAX_SPEED) }} км/ч</strong>
+
+        <div class="alert-icons">
+          <ion-icon name="alert"></ion-icon>
+          <ion-icon name="alert"></ion-icon>
+          <ion-icon name="alert"></ion-icon>
+        </div>
       </ion-card-content>
     </ion-card>
   </google-map>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import BackgroundGeolocation, { Location, State } from 'cordova-background-geolocation-lt';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class MapService {
@@ -15,10 +16,9 @@ export class MapService {
       distanceFilter: 10,
       autoSync: true,
       stopOnTerminate: true,
+      url: `${environment.API_URL}/vehicle/location`,
       startOnBoot: true,
     }, () => BackgroundGeolocation.start());
-
-    BackgroundGeolocation.onLocation((location) => this.locationChange$.next(location));
   }
 
   getAddressFromCoords(geocoder: google.maps.Geocoder, lat: number, lng: number): Promise<any> {
