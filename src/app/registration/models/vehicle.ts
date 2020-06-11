@@ -1,3 +1,5 @@
+import { IStatistic } from 'src/app/statistics/models/details';
+
 export interface IVehicle {
     _id?: string;
     owner: string;
@@ -5,4 +7,5 @@ export interface IVehicle {
     carModel: string;
     carNumber: string;
     phoneNumber: string;
+    statistics?: IStatistic[];
 }

@@ -2,9 +2,10 @@ import { Action } from "@ngrx/store";
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as fromActions from '../actions/registration.actions';
-import { switchMap, map, catchError } from 'rxjs/operators';
+import { switchMap, map, catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { RegistrationService } from '../registration.service';
+import { Router } from '@angular/router';
 
 class EffectError implements Action {
     readonly type = '[Error] Effect Error Registration';
@@ -13,7 +14,8 @@ class EffectError implements Action {
 @Injectable()
 export class RegistrationEffect {
     constructor(private actions$: Actions,
-                private service: RegistrationService) {}
+                private service: RegistrationService,
+                private router: Router) {}
     
     setVehicleRegistration = createEffect (() => 
     this.actions$.pipe(
@@ -25,4 +27,10 @@ export class RegistrationEffect {
             ))
         )
     );
+
+    successRegistration$ = createEffect ( () =>
+        this.actions$.pipe(
+            ofType(fromActions.setRegistrationSuccess),
+            tap(() => this.router.navigateByUrl('/login'))
+        ),{dispatch: false});
 }

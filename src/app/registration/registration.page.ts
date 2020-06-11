@@ -21,19 +21,11 @@ export class RegistrationPage {
         });
     }
 
-    register(){
+    register(): void {
         if(this.form.valid) {
-            const registerForm = this.form.value;
-            this.createVehicle = {
-                owner: registerForm.owner,
-                carDate: registerForm.carDate,
-                carModel: registerForm.carModel,
-                carNumber: registerForm.carNumber,
-                phoneNumber: registerForm.phoneNumber
-            }
-            // console.log(this.form.get('date').value);
-            console.log(this.createVehicle);
+            this.createVehicle = this.form.value;
             this.facade.createVehicle(this.createVehicle);
+            this.form.reset();
         }
     }
 }

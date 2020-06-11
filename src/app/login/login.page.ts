@@ -14,13 +14,14 @@ export class LoginPage {
                 private facade: LoginFacade,
                 private route: ActivatedRoute) {
       this.form = new FormGroup({
-          number: new FormControl('', Validators.required)
+          carNumber: new FormControl('', Validators.required)
       });
     }
     login() {
         if(this.form.valid) {
             const searchForm = this.form.value;
             console.log(searchForm);
+            this.router.navigateByUrl('/tabs');
         }
     }
 }

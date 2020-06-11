@@ -6,6 +6,7 @@ import * as fromActions from '../actions/statistics.actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { IStatistic } from '../models/details';
 import { of } from 'rxjs';
+import { IVehicle } from 'src/app/registration/models/vehicle';
 
 class EffectError implements Action {
   readonly type = '[Error] Effect Error Statistics';
@@ -17,11 +18,11 @@ export class StatisticsEffects {
 
   getStatistics$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromActions.getStatistics),
+      ofType(fromActions.getStatisticsByVehicleId),
       switchMap(({ skip, limit, vehicleId }) =>
-        this.service.getAll(skip, limit, vehicleId).pipe(
-          map((statistics: IStatistic[]) =>
-            fromActions.getStatisticsSuccess({ statistics })
+        this.service.getAllByVehicleId(skip, limit, vehicleId).pipe(
+          map((vehicle: IVehicle) =>
+            fromActions.getStatisticsByVehicleIdSuccess({ vehicle })
           ),
           catchError(() => of(new EffectError()))
         )

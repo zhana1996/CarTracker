@@ -94,7 +94,6 @@ export class MapPage implements OnInit {
           vehicle: '5edfea80a6850828f8720d01',
           date: new Date(),
           address: 'test zasega',
-          carData: 'car data',
           overspeed: 200,
         };
         this.statisticFacade.addStatistic(statistic);

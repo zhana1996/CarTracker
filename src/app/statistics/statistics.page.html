@@ -6,7 +6,17 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-    <app-statistic *ngFor="let statistic of (statistics$ | async)" [statistic]="statistic"></app-statistic>
-    <ion-button *ngIf="(statistics$ | async) && this.skip < (statistics$ | async).length" color="secondary" (click)="loadMore()">Зареди още...</ion-button>
+<ion-content [fullscreen]="true" *ngIf="(statistics$|async) as vehicle">
+    <app-statistic *ngFor="let statistic of vehicle.statistics" [statistic]="statistic">
+      <ion-item>
+        <ion-avatar slot="end">
+            <img src="assets/images/car.jpg" alt="car">
+        </ion-avatar>
+        <ion-label>
+            <p>Регистрационен номер:</p>
+            <h3>{{vehicle.carNumber}}</h3>
+        </ion-label>
+    </ion-item>
+    </app-statistic>
+    <ion-button *ngIf="vehicle && this.skip < vehicle.statistics.length" color="secondary" (click)="loadMore()">Зареди още...</ion-button>
 </ion-content>
