@@ -82,10 +82,9 @@ export class MapPage {
 
     const distance = this.calculateDistance(this.polylinePath);
 
-    // TODO - Add GeocodeService to google free plan and uncomment
-    // const geocoder = new google.maps.Geocoder();
+    const geocoder = new google.maps.Geocoder();
 
-    // const address = await this.mapService.getAddressFromCoords(geocoder, coords.latitude, coords.longitude);
+    const address = await this.mapService.getAddressFromCoords(geocoder, coords.latitude, coords.longitude);
 
     if (distance > this.distanceCounter) {
       this.distanceCounter += 200;
@@ -93,8 +92,8 @@ export class MapPage {
         const statistic: IStatistic = {
           vehicle: '5edfea80a6850828f8720d01',
           date: new Date(),
-          address: 'test zasega',
-          overspeed: 200,
+          address,
+          overspeed: this.speed,
         };
         this.statisticFacade.addStatistic(statistic);
       }
