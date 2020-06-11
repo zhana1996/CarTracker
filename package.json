@@ -28,6 +28,7 @@
     "@ngrx/store": "^9.2.0",
     "cordova-android": "8.1.0",
     "cordova-background-geolocation-lt": "^3.7.0",
+    "pusher-js": "^6.0.3",
     "rxjs": "~6.5.1",
     "tslib": "^1.10.0",
     "xcode": "^3.0.1",

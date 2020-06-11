@@ -3,4 +3,24 @@ ion-card {
     top: 56px;
     left: 0;
     right: 0;
+
+    ion-card-content {
+        display: flex;
+        align-items: center;
+
+        ion-icon {
+            color: red;
+            animation: move 2s infinite ease-in-out;
+            font-size: 1rem;
+        }
+    }
+}
+
+@keyframes move {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.5) rotate(0.1deg);
+    }
 }
