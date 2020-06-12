@@ -1,0 +1,33 @@
+<ion-content  padding>
+    <form  [formGroup]="form" (ngSubmit)="register(form.value)">
+      <ion-grid>
+        <ion-row>
+          <ion-col style="margin-top: 150px;" size="12">
+            <div text-center>
+              <h3 style="text-align: center;">Създай профил!</h3>
+            </div>
+            <div padding>
+              <ion-item>
+                <ion-input  name="owner" type="text" placeholder="Вашето име" formControlName="owner"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-datetime name="carDate" style="padding-left: 2px;" placeholder="Дата на създаване" formControlName="carDate"></ion-datetime>
+              </ion-item>
+              <ion-item>
+                <ion-input name="carModel" type="text" placeholder="Модел на колата" formControlName="carModel"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input name="carNumber" type="text" placeholder="Регистрационен номер на колата" formControlName="carNumber"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input  name="phoneNumber" type="text" placeholder="Телефонен номер" formControlName="phoneNumber"></ion-input>
+              </ion-item>
+            </div>
+            <div padding>
+              <ion-button  size="medium" type="submit" [disabled]="form.invalid" expand="block">Регистрация</ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-content>
