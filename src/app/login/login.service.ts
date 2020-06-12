@@ -10,9 +10,7 @@ import { IVehicle } from '../registration/models/vehicle';
 export class LoginService {
     constructor(private http: HttpClient) {}  
       
-    getVehicle(number: string): Observable<IVehicle>{
-        const params = new HttpParams().set('number', number),
-        options = {params};
-        return this.http.get<IVehicle>(`${environment.API_URL}/getVehicle`, options);
+    loginVehicle(carNumber: string): Observable<IVehicle>{
+        return this.http.post<IVehicle>(`${environment.API_URL}/vehicle/login`, {carNumber});
     }
 }   

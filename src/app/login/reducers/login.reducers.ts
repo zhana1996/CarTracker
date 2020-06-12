@@ -12,12 +12,12 @@ export const initialState: LoginState = {
 
 const featureReducer = createReducer (
     initialState,
-    on (fromActions.getVehicle, state => ({
+    on (fromActions.loginVehicle, state => ({
         ...state
     })),
-    on (fromActions.getVehicleSuccess, (state, {vehicle} )=> ({
+    on (fromActions.loginVehicleSuccess, (state, {vehicle} )=> ({
         ...state,
-        vehicle: vehicle
+        vehicle
     }))
 );
 

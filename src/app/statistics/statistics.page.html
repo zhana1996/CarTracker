@@ -7,6 +7,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" *ngIf="(statistics$|async) as vehicle">
+  <ng-container *ngTemplateOutlet="vehicle.statistics.length > 0 ? statisticList : emptyList"></ng-container>
+  <ng-template #emptyList>
+    <img src="assets/images/emptyList.png" alt="empty list">
+  </ng-template>
+  <ng-template #statisticList>
     <app-statistic *ngFor="let statistic of vehicle.statistics" [statistic]="statistic">
       <ion-item>
         <ion-avatar slot="end">
@@ -18,5 +23,6 @@
         </ion-label>
     </ion-item>
     </app-statistic>
+  </ng-template>
     <ion-button *ngIf="vehicle && this.skip < vehicle.statistics.length" color="secondary" (click)="loadMore()">Зареди още...</ion-button>
 </ion-content>

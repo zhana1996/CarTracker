@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { LoginFacade } from './facade/login.facade';
 
 @Component({
@@ -11,17 +11,15 @@ import { LoginFacade } from './facade/login.facade';
 export class LoginPage {
     public form: FormGroup;
     constructor(private router: Router,
-                private facade: LoginFacade,
-                private route: ActivatedRoute) {
+                private facade: LoginFacade) {
       this.form = new FormGroup({
           carNumber: new FormControl('', Validators.required)
       });
-    }
+    }s
     login() {
         if(this.form.valid) {
-            const searchForm = this.form.value;
-            console.log(searchForm);
-            this.router.navigateByUrl('/tabs');
+            const vehicleData = this.form.value;
+            this.facade.loginVehicle(vehicleData.carNumber);
         }
     }
 }

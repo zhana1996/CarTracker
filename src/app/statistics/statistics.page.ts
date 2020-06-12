@@ -3,6 +3,7 @@ import { IStatistic } from './models/details';
 import { Observable } from 'rxjs';
 import { StatisticsFacade } from './facade/statistics.facade';
 import { IVehicle } from '../registration/models/vehicle';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
     selector: 'app-statistics',
@@ -14,14 +15,15 @@ export class StatisticsPage {
     public limit = 2;
     public statistics$: Observable<IVehicle> = this.facade.statistics$;
 
-    constructor(private facade: StatisticsFacade) {}
+    constructor(private facade: StatisticsFacade,
+                private storageService: LocalStorageService) {}
 
     ionViewWillEnter(): void {
-        this.facade.getStatistics(this.skip, this.limit, '5ee00ff0be49c8442c23880b');
+        this.facade.getStatistics(this.skip, this.limit, this.storageService.vehicle._id);
     }
 
     loadMore() {
         this.skip += 2;
-        this.facade.getStatistics(this.skip, this.limit, '5ee00ff0be49c8442c23880b');
+        this.facade.getStatistics(this.skip, this.limit, this.storageService.vehicle._id);
     }
 }

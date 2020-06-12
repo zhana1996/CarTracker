@@ -7,7 +7,7 @@ import { LoginState } from '../reducers/login.reducers';
 export class LoginFacade {
     constructor(private store: Store<LoginState>){}
 
-    getVehicle(number: string) {
-        this.store.dispatch(fromAction.getVehicle({number}));
+    loginVehicle(carNumber: string) {
+        this.store.dispatch(fromAction.loginVehicle({carNumber}));
     }
 }

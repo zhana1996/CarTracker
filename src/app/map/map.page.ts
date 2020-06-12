@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component } from '@angular/core';
 import { Location } from 'cordova-background-geolocation-lt';
 import { MapService } from './service/map.service';
 import { Platform } from '@ionic/angular';
@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { StatisticsFacade } from '../statistics/facade/statistics.facade';
 import { IStatistic } from '../statistics/models/details';
 import { PusherService } from './service/pusher.service';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
   selector: 'app-map',
@@ -32,11 +33,11 @@ export class MapPage {
   polylinePath: Array<google.maps.LatLng> = [];
 
   constructor(
-    private zone: NgZone,
     private mapService: MapService,
     private platform: Platform,
     private statisticFacade: StatisticsFacade,
     private pusherService: PusherService,
+    private storageService: LocalStorageService
   ) {}
 
   ionViewWillEnter(): void {
@@ -90,7 +91,7 @@ export class MapPage {
       this.distanceCounter += 200;
       if (this.speed > this.MAX_SPEED) {
         const statistic: IStatistic = {
-          vehicle: '5edfea80a6850828f8720d01',
+          vehicle: this.storageService.vehicle._id,
           date: new Date(),
           address,
           overspeed: this.speed,
