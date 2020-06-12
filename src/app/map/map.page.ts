@@ -105,4 +105,8 @@ export class MapPage {
     this.destroyed$.next();
     this.destroyed$.complete();
   }
+
+  clearPath(): void {
+    this.polylinePath = [];
+  }
 }
