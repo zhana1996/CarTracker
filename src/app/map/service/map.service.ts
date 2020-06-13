@@ -10,12 +10,12 @@ export class MapService {
   initBackgroundLocation(): void {
     BackgroundGeolocation.ready({
       reset: false,
-      debug: true,
+      debug: false,
       logLevel: BackgroundGeolocation.LOG_LEVEL_VERBOSE,
       desiredAccuracy: BackgroundGeolocation.DESIRED_ACCURACY_HIGH,
       distanceFilter: 10,
       autoSync: true,
-      stopOnTerminate: true,
+      stopOnTerminate: false,
       url: `${environment.API_URL}/vehicle/location`,
       startOnBoot: true,
     }, () => BackgroundGeolocation.start());

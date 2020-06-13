@@ -17,7 +17,7 @@ export class MapPage {
   private readonly destroyed$ = new Subject<void>();
   private distanceCounter = 200;
 
-  readonly MAX_SPEED = 40;
+  readonly MAX_SPEED = 30;
   readonly options: google.maps.MapOptions = {
     fullscreenControl: false,
     center: { lat: 37.421995, lng: -122.084092 },
@@ -85,11 +85,11 @@ export class MapPage {
 
     const geocoder = new google.maps.Geocoder();
 
-    const address = await this.mapService.getAddressFromCoords(geocoder, coords.latitude, coords.longitude);
-
     if (distance > this.distanceCounter) {
       this.distanceCounter += 200;
       if (this.speed > this.MAX_SPEED) {
+        const address = await this.mapService.getAddressFromCoords(geocoder, coords.latitude, coords.longitude);
+
         const statistic: IStatistic = {
           vehicle: this.storageService.vehicle._id,
           date: new Date(),

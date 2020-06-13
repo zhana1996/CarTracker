@@ -7,6 +7,7 @@
     </base-config>
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">localhost</domain>
-        <domain includeSubdomains="true">http://c9a369d6fc84.ngrok.io</domain>
+        <domain includeSubdomains="true">http://fd98486952f3.ngrok.io</domain>
+        <domain includeSubdomains="true">192.168.0.115</domain>
     </domain-config>
 </network-security-config>

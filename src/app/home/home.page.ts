@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IVehicle } from '../registration/models/vehicle';
 import { LocalStorageService } from '../services/local-storage.service';
 import { Router } from '@angular/router';
@@ -8,11 +8,14 @@ import { Router } from '@angular/router';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss']
 })
-export class HomePage {
+export class HomePage implements OnInit {
   public vehicle: IVehicle;
 
   constructor(private storageService: LocalStorageService,
               private router: Router) {
+  }
+
+  ngOnInit(): void {
     this.vehicle = this.storageService.vehicle;
   }
 

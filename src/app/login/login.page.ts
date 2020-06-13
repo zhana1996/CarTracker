@@ -15,9 +15,9 @@ export class LoginPage {
       this.form = new FormGroup({
           carNumber: new FormControl('', Validators.required)
       });
-    }s
+    }
     login() {
-        if(this.form.valid) {
+        if (this.form.valid) {
             const vehicleData = this.form.value;
             this.facade.loginVehicle(vehicleData.carNumber);
         }
